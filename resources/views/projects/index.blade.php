@@ -16,7 +16,7 @@
  
   @forelse ($projects as $project)
       <div class="col-4 mb-4">
-        <div class="card">
+        <div class="card text-right">
           <div class="card-body">
             @switch($project->status)
                 @case(1)
