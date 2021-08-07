@@ -24,9 +24,13 @@
            background: url("/img/trash.svg");
            background-repeat:no-repeat;
            background-size: 1.1rem;
-           padding: 0 8px;
+           padding: 8px;
            border: 0px;
            outline: none;
+       }
+
+       .checked{
+           text-decoration: line-through;
        }
     </style>
 </head>

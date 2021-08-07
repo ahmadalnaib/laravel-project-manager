@@ -53,7 +53,31 @@
 </div>
 
 <div class="col-lg-8">
-
+@foreach ($project->tasks as $task)
+    <div class="card">
+      <div class="{{$task->done ? 'checked muted':""}}">
+        
+        {{$task->body}}
+      </div>
+    
+    <div>
+      <form action="/projects/{{$project->id}}/tasks/{{$task->id}}" method="POST">
+        @csrf
+        @method('PUT')
+        <input type="checkbox" name="done" class="form-control ml-4" onchange="this.form.submit()"
+        {{$task->done? 'checked':''}}
+        >
+      </form>
+    </div>
+    </div>
+@endforeach
+<div class="card">
+  <form action="{{route('tasks.store',$project->id)}}" method="post">
+    @csrf
+    <input type="text" name="body" class="form-control p-2 ml-2" placeholder="اضف مهمة جديدة">
+    <button type="submit" class="btn btn-primary">اضافة</button>
+  </form>
+</div>
 </div>
 </section>
     
