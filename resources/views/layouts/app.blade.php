@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'h-1')}} - @yield('title','')</title>
+    <title>{{ config('app.name', 'h-1')}}  @yield('title','')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,13 +24,15 @@
            background: url("/img/trash.svg");
            background-repeat:no-repeat;
            background-size: 1.1rem;
-           padding: 8px;
+           padding: 0px 10px;
            border: 0px;
            outline: none;
+           text-align: center
        }
 
        .checked{
            text-decoration: line-through;
+           color: red;
        }
     </style>
 </head>
@@ -73,10 +75,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="{{route('profile')}}" class="dropdown-item">الملف الشخصي</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('تسجيل الخروج') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -1,4 +1,4 @@
-<div class="card-footer bg-transparent" dir="rtl">
+<div class="card-footer  mt-3" dir="rtl">
   <div class="d-flex">
     <div class="d-flex align-items-center">
       <img src="{{asset('img/alarm.svg')}}" alt="">
@@ -9,10 +9,11 @@
     </div>
 
 
-    <div class="d-flex align-items center">
+    <div class="d-flex align-items-center p-3">
       <img src="{{asset('img/list-check.svg')}}" alt="">
-      <div class="mr-1">
-       
+      <div class="mr-2">
+         
+        {{count($project->tasks)}}
 
       </div>
     </div>
@@ -22,7 +23,7 @@
         @method('DELETE')
         @csrf
 
-        <input type="submit" class="btn-delete" >
+        <input type="submit" class="btn-delete" value="">
       </form>
     </div>
   </div>

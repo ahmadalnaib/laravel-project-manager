@@ -23,7 +23,7 @@
                     <span class="text-success">مكتمل</span>
                     @break
                 @case(2)
-                <span class="text-danger">مكتمل</span>
+                <span class="text-danger">ملغي</span>
                     @break
                 @default
                  <span class="text-warning">قيد الانجاز</span>

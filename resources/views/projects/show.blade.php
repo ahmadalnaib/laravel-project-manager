@@ -4,10 +4,10 @@
 
 <header class="d-flex justify-content-between align-items-center my-5" dir="rtl">
   <div class="h6 text-dark">
-    <a href="{{route('projects.index')}}">{{$project->title}}</a>
+    <a href="{{route('projects.index')}}">العودة الى المشاريع</a>
   </div>
   <div>
-    <a href="{{route('projects.edit',$project->id)}}">تعديل مشروع</a>
+    <a class="btn btn-primary" href="{{route('projects.edit',$project->id)}}">تعديل مشروع</a>
   </div>
 </header>
 
@@ -16,16 +16,19 @@
 <div class="col-lg-4">
   <div class="card text-right">
     <div class="card-body">
-      @switch($project->status)
-          @case(1)
-              <span class="text-success">مكتمل</span>
-              @break
-          @case(2)
-          <span class="text-danger">مكتمل</span>
-              @break
-          @default
-           <span class="text-warning">قيد الانجاز</span>
-      @endswitch
+      <div class="status">
+
+        @switch($project->status)
+            @case(1)
+                <span class="text-success">مكتمل</span>
+                @break
+            @case(2)
+            <span class="text-danger">ملغي</span>
+                @break
+            @default
+             <span class="text-warning">قيد الانجاز</span>
+        @endswitch
+      </div>
       <h5 class="font-weight-bold card-title">
         <a href="{{route('projects.show',$project->id)}}">{{$project->title}}</a>
       </h5>
@@ -52,27 +55,36 @@
 </div>
 </div>
 
-<div class="col-lg-8">
+<div class="col-lg-8 ">
 @foreach ($project->tasks as $task)
-    <div class="card">
-      <div class="{{$task->done ? 'checked muted':""}}">
+    <div class="card d-flex flex-row mb-3 align-items-center p-3">
+      <div class="{{$task->done ? 'checked muted':""}} p-3 ">
         
         {{$task->body}}
       </div>
     
-    <div>
+    <div class="mr-auto">
       <form action="/projects/{{$project->id}}/tasks/{{$task->id}}" method="POST">
         @csrf
         @method('PUT')
-        <input type="checkbox" name="done" class="form-control ml-4" onchange="this.form.submit()"
+        <input type="checkbox" name="done" class=" ml-4" onchange="this.form.submit()"
         {{$task->done? 'checked':''}}
         >
       </form>
     </div>
+
+    <div class="d-flex align-items-center pt-2 ">
+      <form action="/projects/{{$task->project_id}}/tasks/{{$task->id}}" method="POST">
+        @method('DELETE')
+        @csrf
+        <input type="submit" class="btn-delete" value="">
+      </form>
+    </div>
+
     </div>
 @endforeach
 <div class="card">
-  <form action="{{route('tasks.store',$project->id)}}" method="post">
+  <form action="{{route('tasks.store',$project->id)}}" method="post" class="d-flex">
     @csrf
     <input type="text" name="body" class="form-control p-2 ml-2" placeholder="اضف مهمة جديدة">
     <button type="submit" class="btn btn-primary">اضافة</button>

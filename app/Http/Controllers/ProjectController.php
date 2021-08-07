@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ProjectController extends Controller
 {
@@ -71,7 +72,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('projects.edit',compact('project'));
     }
 
     /**
@@ -83,9 +84,14 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project->update([
-        'status'=>request('status')
+
+        $data=request()->validate([
+         'title'=>'sometimes|required',
+         'description'=>'sometimes|required',
+         'status'=>'sometimes|required'
         ]);
+
+        $project->update($data);
 
         return redirect()->route('projects.update',$project->id);
     }
@@ -98,6 +104,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('projects.index');
     }
 }

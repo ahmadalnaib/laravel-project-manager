@@ -31,4 +31,10 @@ class TaskController extends Controller
         return redirect()->back();
 
     }
+
+    public function destroy(Project $project ,Task $task)
+    {
+        $task->delete();
+        return redirect()->back();
+    }
 }
