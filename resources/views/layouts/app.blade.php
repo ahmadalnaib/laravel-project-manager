@@ -18,6 +18,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+       .btn-delete{
+           background: url("/img/trash.svg");
+           background-repeat:no-repeat;
+           background-size: 1.1rem;
+           padding: 0 8px;
+           border: 0px;
+           outline: none;
+       }
+    </style>
 </head>
 <body>
     <div id="app">
