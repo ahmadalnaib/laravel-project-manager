@@ -15,10 +15,10 @@
 @endif
 <div class="row">
   <div class="col-md-6 mx-auto">
-    <div class="card">
+    <div class="card p-5">
       <div class="text-center m-3">
         <img src="{{asset('storage/' . auth()->user()->image)}}" width='82px' height="82px "alt="profile">
-        <h3>{{auth()->user()->name}}</h3>
+        <h3 class="mt-4 font-weight-bold">{{auth()->user()->name}}</h3>
       </div>
       <div class="card-body text-right">
     <form action="{{route('profile.update')}}" method="POST" enctype="multipart/form-data">

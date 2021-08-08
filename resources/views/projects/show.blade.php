@@ -14,8 +14,9 @@
 
 <section class="row text-right" dir="rtl">
 <div class="col-lg-4">
-  <div class="card text-right">
+  <div class="card text-right mt-4">
     <div class="card-body">
+     
       <div class="status">
 
         @switch($project->status)
@@ -35,13 +36,14 @@
       <div class="card-text mt-4">
         {{$project->description,150}}
       </div>
-      @include('projects.footer')
     </div>
+    @include('projects.footer')
   </div>
 
 
 <div class="card">
   <div class="card-body">
+    <h5 class="font-weight-bold">تغير حالة المشروع</h5>
     <form action="{{route('projects.update',$project->id)}}" method="POST"> 
       @method('PATCH')
       @csrf
@@ -57,7 +59,7 @@
 
 <div class="col-lg-8 ">
 @foreach ($project->tasks as $task)
-    <div class="card d-flex flex-row mb-3 align-items-center p-3">
+    <div class="card d-flex flex-row mt-3 align-items-center p-4">
       <div class="{{$task->done ? 'checked muted':""}} p-3 ">
         
         {{$task->body}}
@@ -83,10 +85,10 @@
 
     </div>
 @endforeach
-<div class="card">
-  <form action="{{route('tasks.store',$project->id)}}" method="post" class="d-flex">
+<div class="card mt-4">
+  <form action="{{route('tasks.store',$project->id)}}" method="post" class="d-flex p-3">
     @csrf
-    <input type="text" name="body" class="form-control p-2 ml-2" placeholder="اضف مهمة جديدة">
+    <input type="text" name="body" class="form-control p-2 ml-2 border-0" placeholder="اضف مهمة جديدة">
     <button type="submit" class="btn btn-primary">اضافة</button>
   </form>
 </div>

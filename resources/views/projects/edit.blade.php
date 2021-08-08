@@ -6,7 +6,8 @@
 @section('content')
     
 <div class="row justify-content-center text-right">
-  <div class="col-10">
+  <div class="col-8">
+    <div class="card p-3">
     <h3 class="text-center pb-5 font-weight-bold">
       تعديل جديد
     </h3>
@@ -34,12 +35,13 @@
           {{$project->description}}
         </textarea>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 flex-row-reverse">
         <button type="submit" class="btn btn-primary">تعديل</button>
         <a class="btn btn-light" href="{{route('projects.index')}}">الغاء</a>
       </div>
 
     </form>
+  </div>
   </div>
 </div>
 

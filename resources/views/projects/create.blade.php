@@ -6,7 +6,9 @@
 @section('content')
     
 <div class="row justify-content-center text-right">
-  <div class="col-10">
+  <div class="col-8">
+
+    <div class="card p-4">
     <h3 class="text-center pb-5 font-weight-bold">
       مشروع جديد
     </h3>
@@ -31,12 +33,13 @@
         <label for="description" class="form-label">وصف المشروع</label>
         <textarea name="description" class="form-control" id="description" cols="30" rows="10"></textarea>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 d-flex flex-row-reverse">
         <button type="submit" class="btn btn-primary">انشاء</button>
-        <a class="btn btn-light" href="{{route('projects.index')}}">الغاء</a>
+        <a class="btn btn-light mr-3" href="{{route('projects.index')}}">الغاء</a>
       </div>
 
     </form>
+ </div>
   </div>
 </div>
 

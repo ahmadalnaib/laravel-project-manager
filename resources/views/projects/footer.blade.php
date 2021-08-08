@@ -1,6 +1,6 @@
-<div class="card-footer  mt-3" dir="rtl">
+<div class="card-footer bg-transparent" dir="rtl">
   <div class="d-flex">
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center ">
       <img src="{{asset('img/alarm.svg')}}" alt="">
       <div class="mr-1">
         {{$project->created_at->diffForHumans()}}
