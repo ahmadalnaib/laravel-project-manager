@@ -3,7 +3,16 @@
 @section('title','الملف الشخصي')
 
 @section('content')
+@if($errors->any())
+<div class="alert alert-danger" role="alert">
+
+   
+        @foreach($errors->all() as $error)
+            <small>{{ $error }}</small>
+        @endforeach
     
+</div>
+@endif
 <div class="row">
   <div class="col-md-6 mx-auto">
     <div class="card">
@@ -41,7 +50,7 @@
     </div>
     <div class="mb-3 d-flex mt-5 flex-row-reverse m-2">
       <button type="submit" class="btn btn-primary mr-2">حفظ التعديلات</button>
-      <a href="{{route('projects.index')}}" class="btn btn-light">الغاء</a>
+      
      
     </div>
     </form>

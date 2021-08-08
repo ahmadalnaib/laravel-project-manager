@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-   
+
+
+
     public function __construct()
     {
         $this->middleware('auth');
     }
-
+    
     public function index()
     {
         return view('profile');
@@ -21,7 +23,7 @@ class ProfileController extends Controller
 
     public function update()
     {
-      
+        $userId=auth()->user()->id;
 
         $data=request()->validate([
           'name'=>['required','min:3'],
@@ -39,8 +41,8 @@ class ProfileController extends Controller
             $data['image']=$path;
         }
 
-        auth()->user()->update($data);
+        User::findOrFail($userId)->update($data);
 
-        return back();
+        return redirect()->route('projects.index');
     }
 }

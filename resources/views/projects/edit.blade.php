@@ -10,6 +10,16 @@
     <h3 class="text-center pb-5 font-weight-bold">
       تعديل جديد
     </h3>
+    @if($errors->any())
+    <div class="alert alert-danger" role="alert">
+    
+       
+            @foreach($errors->all() as $error)
+                <small>{{ $error }}</small>
+            @endforeach
+        
+    </div>
+    @endif
 
     <form action="{{route('projects.update',$project->id)}}" method="POST" dir="rtl">
       @csrf

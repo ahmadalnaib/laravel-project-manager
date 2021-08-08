@@ -30,6 +30,6 @@ Route::post('/projects/{project}/tasks',[TaskController::class,'store'])->name('
 Route::put('/projects/{project}/tasks/{task}',[TaskController::class,'update']);
 Route::delete('/projects/{project}/tasks/{task}',[TaskController::class,'destroy']);
 
-Route::get('/profile',[ProfileController::class,'index']);
+Route::get('/profile',[ProfileController::class,'index'])->name('profile');
 Route::put('/profile',[ProfileController::class,'update'])->name('profile.update');
 
