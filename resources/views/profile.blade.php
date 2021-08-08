@@ -7,12 +7,12 @@
 <div class="row">
   <div class="col-md-6 mx-auto">
     <div class="card">
-      <div class="text-center">
-        <img src="{{asset(auth()->user()->image)}}" width='82px' height="82px "alt="profile">
+      <div class="text-center m-3">
+        <img src="{{asset('storage/' . auth()->user()->image)}}" width='82px' height="82px "alt="profile">
         <h3>{{auth()->user()->name}}</h3>
       </div>
       <div class="card-body text-right">
-    <form action="{{route('profile')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('profile.update')}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="mb-3">
@@ -39,14 +39,29 @@
       </div>
      
     </div>
-    <div class="mb-3 d-flex mt-5 flex-row-reverse">
+    <div class="mb-3 d-flex mt-5 flex-row-reverse m-2">
       <button type="submit" class="btn btn-primary mr-2">حفظ التعديلات</button>
-      <a href="{{route('projects.index')}}"  class="btn btn-light">الرجوع</>
+      <a href="{{route('projects.index')}}" class="btn btn-light">الغاء</a>
+     
     </div>
     </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById('image').onchange=uploadOnChange;
+  function uploadOnChange(){
+    let filename=this.value;
+    let lastIndex=filename.lastIndexOf("\\");
+
+    if(lastIndex >= 0){
+      filename=filename.substring(lastIndex +1 );
+    }
+
+    document.getElementById('image-label').innerHTML=filename;
+  }
+</script>
     
 @endsection

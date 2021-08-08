@@ -2,11 +2,11 @@
 
 @section('content')
 <header class="d-flex justify-content-between align-items-center my-5" dir="rtl">
-  <div class="h6 text-dark">
-    <a href="{{route('projects.index')}}">المشاريع</a>
+  <div class="h6 text-white">
+    <a class="btn btn-primary text-white" href="{{route('projects.index')}}">المشاريع</a>
   </div>
   <div>
-    <a href="{{route('projects.create')}}">انشاء مشروع</a>
+    <a class="btn btn-primary" href="{{route('projects.create')}}">انشاء مشروع</a>
   </div>
 </header>
 
@@ -20,15 +20,15 @@
           <div class="card-body">
             @switch($project->status)
                 @case(1)
-                    <span class="text-success">مكتمل</span>
+                    <span class="bg-success p-2 text-white mb-2 rounded-pill">مكتمل</span>
                     @break
                 @case(2)
-                <span class="text-danger">ملغي</span>
+                <span class="bg-danger p-2 text-white mb-2 rounded-pill">ملغي</span>
                     @break
                 @default
-                 <span class="text-warning">قيد الانجاز</span>
+                 <span class="bg-warning p-2 text-white mb-2 rounded-pill">قيد الانجاز</span>
             @endswitch
-            <h5 class="font-weight-bold card-title">
+            <h5 class="font-weight-bold card-title mt-3">
               <a href="{{route('projects.show',$project->id)}}">{{$project->title}}</a>
             </h5>
             <div class="card-text mt-4">
